@@ -8,16 +8,15 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout the specific branch
-    - uses: actions/checkout@v4
-      with:
-        ref: staging
-        sparse-checkout: |
-          /Backend
-        sparse-checkout-cone-mode: true
-
-    - name: Display Github 
-      run: |
-       echo ${{GITHUB.WORKSPACE}}
+      - name: Checkout the specific branch
+      - uses: actions/checkout@v4
+        with:
+          ref: staging
+          sparse-checkout: |
+            /Backend
+          sparse-checkout-cone-mode: true
+  
+      - name: Display Github 
+        run: |
+         echo ${{GITHUB.WORKSPACE}}
