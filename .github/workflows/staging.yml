@@ -20,4 +20,4 @@ jobs:
 
     - name: Display the repository workspace
       run: |
-        echo ${{ github.workspace }}
+        echo ${{ GITHUB_WORKSPACE }}
