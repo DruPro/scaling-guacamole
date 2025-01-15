@@ -6,7 +6,7 @@ on:
       - 'Backend/**'  # Trigger if any file in the 'backend' directory changes
 
 jobs:
-  docker-start:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,5 +18,6 @@ jobs:
           /Backend
         sparse-checkout-cone-mode: true
 
+    - name: Display Github 
       run: |
        echo ${{GITHUB.WORKSPACE}}
