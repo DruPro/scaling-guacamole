@@ -10,14 +10,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout the specific branch
-    - uses: actions/checkout@v4
+    - name: Checkout the staging branch with sparse-checkout
+      uses: actions/checkout@v4
       with:
         ref: staging
         sparse-checkout: |
-          /Backend
+          Backend/*
         sparse-checkout-cone-mode: true
-   
-    - name: Displaying Repo
+
+    - name: Display the repository workspace
       run: |
-        echo ${{GITHUB.WORKSPACE}}
+        echo ${{ github.workspace }}
