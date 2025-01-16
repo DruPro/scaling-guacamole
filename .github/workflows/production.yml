@@ -1,0 +1,45 @@
+name: Production EC2 Instance Deployment
+run-name: ${{ github.actor }} Has Deployed To An EC2 Instance
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'Backend/**'  # Trigger if any file in the 'backend' directory changes
+
+jobs:
+  Deploy-To-EC2:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Create PEM Key
+      run: |
+        mkdir -p ~/.ssh
+        echo "$SSH_KEY" > ~/.ssh/alan.pem
+        chmod 600 ~/.ssh/alan.pem
+
+        # Add the EC2 instance to known_hosts
+        ssh-keyscan ec2-18-236-74-56.us-west-2.compute.amazonaws.com >> ~/.ssh/known_hosts
+        chmod 644 ~/.ssh/known_hosts
+      env:
+        SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        
+    - name: Connect to EC2 and execute commands
+      run: |
+        ssh -vvv -o ConnectTimeout=30 -i "/home/runner/.ssh/alan.pem" ec2-user@ec2-18-236-74-56.us-west-2.compute.amazonaws.com <<'EOF'
+        echo "Successfully connected to EC2!"
+        # GO TO DIRECTORY CONTAINING UPDATE SCRIPT
+        cd /home/ec2-user
+        # RUN SCRIPT TO UPDATE SERVICE FILES
+        sudo bash update.sh
+        # DEPLOY THE SERVICE
+        sudo bash deploy_production.sh
+        exit
+        EOF
+      env:
+        SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    - name: Remove Secrets
+      run: |
+        echo "Removing Secrets"
+        rm -f ~/.ssh/alan.pem
