@@ -20,8 +20,8 @@ jobs:
             Backend
           sparse-checkout-cone-mode: true
       
-      - name: Expressing Messagee
+      - name: Display Backend Folder Contents
         run: |
-          echo test_rtest
+          ls Backend
       
 
