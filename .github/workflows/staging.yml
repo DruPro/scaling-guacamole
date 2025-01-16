@@ -1,3 +1,5 @@
+name: Staging EC2 Instance Deployment
+run-name: ${{ github.actor }} Has Deployed To An EC2 Instance
 on:
  push:
   branches:
@@ -5,7 +7,7 @@ on:
   paths:
     - 'Backend/**'  # Trigger if any file in the 'backend' directory changes
 jobs:
- Deploy-To-EC2:
+  Deploy-To-EC2:
    runs-on: ubuntu-latest
    steps:
     - name: Checkout the specific branch
@@ -16,6 +18,6 @@ jobs:
           /Backend
         sparse-checkout-cone-mode: true
   
-    - name: Display Github 
-      run: |
+    - name: Display Github Workspace
+    - run: |
        echo ${{GITHUB.WORKSPACE}}
