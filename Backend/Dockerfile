@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:lts
 WORKDIR /App
 COPY package*.json ./
 COPY index.js ./index.js
