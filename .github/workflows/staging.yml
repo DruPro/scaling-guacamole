@@ -22,4 +22,4 @@ jobs:
           
       - name: Display Github Workspace
         run: |
-          echo ${{GITHUB_WORKSPACE}}
+          echo ${{GITHUB.WORKSPACE}}
