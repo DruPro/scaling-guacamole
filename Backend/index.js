@@ -3,7 +3,10 @@ const app = express();
 const port = 3001;
 const cors = require('cors');
 
-app.use(cors())
+app.use(cors({
+    origin: '*'
+  }));
+
 app.get('/gem',(req,res)=>{
     res.send(JSON.stringify({Gem: 1}))
 })
