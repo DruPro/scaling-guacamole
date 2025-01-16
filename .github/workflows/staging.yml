@@ -1,9 +1,9 @@
 on:
-  push:
-    branches:
-      - staging
-    paths:
-      - 'Backend/**'  # Trigger if any file in the 'backend' directory changes
+ push:
+  branches:
+    - staging
+  paths:
+    - 'Backend/**'  # Trigger if any file in the 'backend' directory changes
 jobs:
  Deploy-To-EC2:
    runs-on: ubuntu-latest
