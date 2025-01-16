@@ -4,19 +4,18 @@ on:
       - staging
     paths:
       - 'Backend/**'  # Trigger if any file in the 'backend' directory changes
-
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout the specific branch
-      - uses: actions/checkout@v4
-        with:
-          ref: staging
-          sparse-checkout: |
-            /Backend
-          sparse-checkout-cone-mode: true
+ Deploy-To-EC2:
+   runs-on: ubuntu-latest
+   steps:
+    - name: Checkout the specific branch
+    - uses: actions/checkout@v4
+      with:
+        ref: staging
+        sparse-checkout: |
+          /Backend
+        sparse-checkout-cone-mode: true
   
-      - name: Display Github 
-        run: |
-         echo ${{GITHUB.WORKSPACE}}
+    - name: Display Github 
+      run: |
+       echo ${{GITHUB.WORKSPACE}}
