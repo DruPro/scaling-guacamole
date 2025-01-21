@@ -12,7 +12,7 @@ app.use((req, res, next) => {
   next();
 });
 
-const message = "I stumbled into a city where every building is a server and the streets hum with static. The stores? A nightmare. One sold Fresh Air™, bottled and branded. Another had loaves of bread—all in the cloud, naturally. The people? They only speak in binary, and even my hello turned into a glitch. I think I’m stuck in a dystopian software update.";
+const message = "I stumbled into a city where every building is a server and the streets hum with static. HELLO WORLD. The stores? A nightmare. One sold Fresh Air™, bottled and branded. Another had loaves of bread—all in the cloud, naturally. The people? They only speak in binary, and even my hello turned into a glitch. I think I’m stuck in a dystopian software update.";
 
 app.get('/gem', (req, res) => {
     console.log('Received request for /gem');
