@@ -5,7 +5,7 @@ const cors = require('cors');
 
 app.use(cors({
     origin: '*'
-}));
+));
 
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.url}`);
